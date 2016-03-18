@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - migrations@localhost" uuid="5ca77870-5300-4f65-9706-d840ecbe34f5">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>migrations.*</schema-pattern>
+      <default-schemas>migrations.*</default-schemas>
+    </data-source>
+  </component>
+</project>

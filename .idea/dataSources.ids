@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - migrations@localhost" uuid="5ca77870-5300-4f65-9706-d840ecbe34f5">
+    <database-info product="MySQL" version="5.6.26" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="migrations"/>
+    <table name="backer_project" schema="" catalog="migrations" type="TABLE">
+      <column name="backer_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="project_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <foreign-key name="backer_project_backer_id_foreign" columns="backer_id" ref-table="backers" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="backer_project_project_id_foreign" columns="project_id" ref-table="projects" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="backer_project_backer_id_index" unique="false" columns="backer_id"/>
+      <index name="backer_project_project_id_index" unique="false" columns="project_id"/>
+    </table>
+    <table name="backers" schema="" catalog="migrations" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="reward" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="method_of_pay" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="amount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="funds" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="backers_user_id_foreign" columns="user_id" ref-table="users" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="backer_project_backer_id_foreign" table="backer_project" schema="" catalog="migrations" columns="backer_id"/>
+      <exported-key name="donations_backer_id_foreign" table="donations" schema="" catalog="migrations" columns="backer_id"/>
+      <index name="backers_user_id_foreign" unique="false" columns="user_id"/>
+    </table>
+    <table name="categories" schema="" catalog="migrations" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="projects_category_id_foreign" table="projects" schema="" catalog="migrations" columns="category_id"/>
+    </table>
+    <table name="comments" schema="" catalog="migrations" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="text" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="user_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="project_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="comments_project_id_foreign" columns="project_id" ref-table="projects" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="comments_user_id_foreign" columns="user_id" ref-table="users" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="comments_project_id_foreign" unique="false" columns="project_id"/>
+      <index name="comments_user_id_foreign" unique="false" columns="user_id"/>
+    </table>
+    <table name="conditions" schema="" catalog="migrations" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="startMoney" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="endMoney" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="number" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="project_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="conditions_project_id_foreign" columns="project_id" ref-table="projects" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="conditions_project_id_foreign" unique="false" columns="project_id"/>
+    </table>
+    <table name="creators" schema="" catalog="migrations" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="postcode" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="country" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="home_address" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="creators_user_id_foreign" columns="user_id" ref-table="users" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="projects_creator_id_foreign" table="projects" schema="" catalog="migrations" columns="creator_id"/>
+      <index name="creators_user_id_foreign" unique="false" columns="user_id"/>
+    </table>
+    <table name="donations" schema="" catalog="migrations" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="isActive" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="isPopular" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="backer_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="project_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="donations_backer_id_foreign" columns="backer_id" ref-table="backers" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="donations_project_id_foreign" columns="project_id" ref-table="projects" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="donations_backer_id_foreign" unique="false" columns="backer_id"/>
+      <index name="donations_project_id_foreign" unique="false" columns="project_id"/>
+    </table>
+    <table name="migrations" schema="" catalog="migrations" type="TABLE">
+      <column name="migration" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="batch" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    </table>
+    <table name="password_resets" schema="" catalog="migrations" type="TABLE">
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="token" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <index name="password_resets_email_index" unique="false" columns="email"/>
+      <index name="password_resets_token_index" unique="false" columns="token"/>
+    </table>
+    <table name="projects" schema="" catalog="migrations" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="video_link" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="risk" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="duration" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="category_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="creator_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="projects_category_id_foreign" columns="category_id" ref-table="categories" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="projects_creator_id_foreign" columns="creator_id" ref-table="creators" ref-schema="" ref-catalog="migrations" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="backer_project_project_id_foreign" table="backer_project" schema="" catalog="migrations" columns="project_id"/>
+      <exported-key name="comments_project_id_foreign" table="comments" schema="" catalog="migrations" columns="project_id"/>
+      <exported-key name="conditions_project_id_foreign" table="conditions" schema="" catalog="migrations" columns="project_id"/>
+      <exported-key name="donations_project_id_foreign" table="donations" schema="" catalog="migrations" columns="project_id"/>
+      <index name="projects_category_id_foreign" unique="false" columns="category_id"/>
+      <index name="projects_creator_id_foreign" unique="false" columns="creator_id"/>
+    </table>
+    <table name="users" schema="" catalog="migrations" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="isBacker" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="isCreator" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="isAdmin" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="isModer" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="isActive" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="backers_user_id_foreign" table="backers" schema="" catalog="migrations" columns="user_id"/>
+      <exported-key name="comments_user_id_foreign" table="comments" schema="" catalog="migrations" columns="user_id"/>
+      <exported-key name="creators_user_id_foreign" table="creators" schema="" catalog="migrations" columns="user_id"/>
+      <index name="users_email_unique" unique="true" columns="email"/>
+    </table>
+  </data-source>
+</component>
