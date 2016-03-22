@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -28,7 +29,7 @@ class AdminController extends Controller
         $categories = Category::all();
         $backers = Backer::all();
         $creators = Creator::all();
-        return view('Admin.index',compact('creators','count','projects','comments','users','categories','backers'));
+        return view('Admin.index',compact('creators','count','projects','comments','categories','backers'));
     }
 
     /**
@@ -95,5 +96,45 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function users(){
+        $users = User::all();
+        return view('Admin.users',compact('users'));
+    }
+
+    public function users_id($id){
+        $users = User::all();
+        $user = User::find($id);
+        return view('Admin.edit',compact('users','user'));
+    }
+
+    public function users_id_post(Request $request, $id){
+//        $user = User::find($id);
+//        $user->update([
+//            'name' => $request['name'],
+//            'email' => $request['email'],
+//            'isBacker' => $request['isBacker'],
+//            'isCreator' => $request['isCreator'],
+//            'isAdmin' => $request['isAdmin'],
+//            'isModer' => $request['isModer'],
+//            'isActive' => $request['isActive'],
+//        ]);
+        $data = [
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'isBacker' => $request['isBacker'],
+            'isCreator' => $request['isCreator'],
+            'isAdmin' => $request['isAdmin'],
+            'isModer' => $request['isModer'],
+            'isActive' => $request['isActive']
+        ];
+        $i = DB::table('users')->where('id',$id)->update($data);
+        return redirect(route('users'));
+    }
+
+    public function users_delete($id){
+        User::destroy($id);
+        return redirect(route('users'));
     }
 }

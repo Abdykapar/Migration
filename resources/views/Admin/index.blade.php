@@ -114,74 +114,6 @@
                     <div class="row">
                         <!-- Left col -->
                         <section class="col-lg-10 connectedSortable">
-
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3 class="box-title">User registrations</h3>
-                                </div><!-- /.box-header -->
-                                <div class="box-body no-padding">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <th style="width: 10px">#</th>
-                                            <th>Name</th>
-                                            <th>email</th>
-                                            <th style="width: 90px">Backer</th>
-                                            <th style="width: 90px">Creator</th>
-                                            <th style="width: 90px">Admin</th>
-                                            <th style="width: 90px">Moder</th>
-                                            <th style="width: 90px">Active</th>
-                                            <th>created at</th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                        @foreach($users as $user)
-                                            <tr>
-                                                <td>{{ $user->id }}.</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>
-                                                    {{ $user->email }}
-                                                </td>
-                                                @if ($user->isBacker)
-                                                <td><span class="glyphicon glyphicon-ok"></span></td>
-                                                    @else
-                                                    <td></td>
-                                                @endif
-
-                                                @if ($user->isCreator)
-                                                    <td><span class="glyphicon glyphicon-ok"></span></td>
-                                                @else
-                                                    <td></td>
-                                                @endif
-                                                @if ($user->isAdmin)
-                                                    <td><span class="glyphicon glyphicon-ok"></span></td>
-                                                @else
-                                                    <td></td>
-                                                @endif
-                                                @if ($user->isModer)
-                                                    <td><span class="glyphicon glyphicon-ok"></span></td>
-                                                @else
-                                                    <td></td>
-                                                @endif
-                                                @if ($user->isActive)
-                                                    <td><span class="glyphicon glyphicon-ok"></span></td>
-                                                @else
-                                                    <td></td>
-                                                @endif
-                                                <td>{{ $user->created_at }}</td>
-                                                <td style="width: 50px;"><input type="button" class="btn btn-success" value="edit"></td>
-                                                <td style="width: 50px;"><input type="button" class="btn btn-danger" value="delete"></td>
-                                            </tr>
-                                        @endforeach
-
-
-                                    </table>
-                                    <div class="box-footer ">
-                                        <div class=" col-lg-offset-11 ">
-                                            <input style="width: 90px" type="button" class="btn btn-primary" value="add">
-                                        </div>
-                                    </div>
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Categories</h3>
@@ -205,11 +137,6 @@
                                             </tr>
                                         @endforeach
                                     </table>
-                                    <div class="box-footer ">
-                                        <div class=" col-lg-offset-11 ">
-                                            <input style="width: 90px" type="button" class="btn btn-primary" value="add">
-                                        </div>
-                                    </div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                             <div class="box">
@@ -243,11 +170,6 @@
                                             </tr>
                                         @endforeach
                                     </table>
-                                    <div class="box-footer ">
-                                        <div class=" col-lg-offset-11 ">
-                                            <input style="width: 90px" type="button" class="btn btn-primary" value="add">
-                                        </div>
-                                    </div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                             <div class="box">
@@ -279,11 +201,6 @@
                                             </tr>
                                         @endforeach
                                     </table>
-                                    <div class="box-footer ">
-                                        <div class=" col-lg-offset-11 ">
-                                            <input style="width: 90px" type="button" class="btn btn-primary" value="add">
-                                        </div>
-                                    </div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                             <div class="box">
@@ -317,11 +234,6 @@
                                             </tr>
                                         @endforeach
                                     </table>
-                                    <div class="box-footer ">
-                                        <div class=" col-lg-offset-11 ">
-                                            <input style="width: 90px" type="button" class="btn btn-primary" value="add">
-                                        </div>
-                                    </div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </section><!-- /.Left col -->
